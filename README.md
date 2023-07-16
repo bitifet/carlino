@@ -33,8 +33,12 @@ cat myHtmlFile.html | carlino > myPugFile.pug
 **Example:**
 
 ```
-" F8 key -> Switch visually selected text between PUG and HTML
-:map <F8> :!carlino<enter>
+" F8 key -> Switch visually selected text between PUG and HTML:
+:vmap <F8> :!carlino<enter>
+
+" F8 key -> Visually select all text (with no blank lines) under cursor and
+" switch between PUG and HTML:
+:nmap <F8> vip<F8>j
 ```
 
 
