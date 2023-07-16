@@ -1,0 +1,32 @@
+{
+  "name": "carlino",
+  "version": "1.0.0",
+  "description": "Gentle pug-cli wrapper that outputs attributes with single quotes allowing for readable JSON values.",
+  "bin": {
+      "carlino": "./index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitifet/carlino.git"
+  },
+  "keywords": [
+    "pug",
+    "json",
+    "html",
+    "readable"
+  ],
+  "author": "Joan Miquel Torres Rigo <joanmi@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/bitifet/carlino/issues"
+  },
+  "homepage": "https://github.com/bitifet/carlino#readme",
+  "dependencies": {
+    "html2pug": "^4.0.0",
+    "is-html": "^3.0.0",
+    "pug": "^3.0.2"
+  }
+}
