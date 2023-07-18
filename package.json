@@ -1,6 +1,6 @@
 {
   "name": "carlino",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Gentle pug-cli wrapper that outputs attributes with single quotes allowing for readable JSON values.",
   "bin": {
       "carlino": "./index.js"
