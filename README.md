@@ -13,6 +13,17 @@ production of static HTML using [PUG](https://pugjs.org) syntax while storing
 it in HTML, eliminating the need for readers to know anything about PUG
 template syntax.
 
+
+Installation
+------------
+
+To install *Carlino* in your system globally you only need to execute:
+
+```sh
+npm install -g carlino
+```
+
+
 Usage
 -----
 
