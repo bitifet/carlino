@@ -4,6 +4,7 @@ const pug = require("pug");
 const html2pug = require("html2pug");
 const re_tag = /<([^>]+)>/g;
 const re_blank = /^\s*[\r\n]+/gm;
+const re_isDocument = /^\s*<(?:!doctype|html)[^>]*>/gi;
 
 const pugOptions = {
     pretty: true,
@@ -11,7 +12,6 @@ const pugOptions = {
 };
 
 const htmlOptions = {
-    fragment: true,
     doubleQuotes: false,
     tabs: false,
 };
@@ -58,7 +58,10 @@ const toHTML = src => swapQuoting(//{{{
 );//}}}
 
 const toPug = src => removeBlanks(
-    html2pug(src, htmlOptions)
+    html2pug(src, {
+        ...htmlOptions,
+        fragment: ! src.match(re_isDocument)
+    })
 );
 
 getStdin().then(async src=>{
