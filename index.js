@@ -2,7 +2,8 @@
 
 const pug = require("pug");
 const html2pug = require("html2pug");
-const tagRegex = /<([^>]+)>/g;
+const re_tag = /<([^>]+)>/g;
+const re_blank = /^\s*[\r\n]+/gm;
 
 const pugOptions = {
     pretty: true,
@@ -27,7 +28,7 @@ const getStdin = async () => await new Promise((resolve, reject) => {//{{{
 function swapQuoting(html) {//{{{
 
   // Parse all HTML tags:
-  html = html.replace(tagRegex, function(match) {
+  html = html.replace(re_tag, function(match) {
     // Extract tag contents:
     var content = match.slice(1, -1);
 
@@ -47,11 +48,18 @@ function swapQuoting(html) {//{{{
   return html;
 };//}}}
 
+function removeBlanks(pug) {
+    return pug.replace(re_blank, "");
+};
+
 const toHTML = src => swapQuoting(//{{{
+    // Avoid blank lines in pug output.
     pug.render(src, pugOptions)
 );//}}}
 
-const toPug = src => html2pug(src, htmlOptions);
+const toPug = src => removeBlanks(
+    html2pug(src, htmlOptions)
+);
 
 getStdin().then(async src=>{
     const {default: isHtml} = await import("is-html");
